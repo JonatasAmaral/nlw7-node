@@ -4,6 +4,12 @@ import { response } from "express";
 interface IAccessTokenResponse {
 	access_token: string;
 }
+interface IUserResponse {
+	avatar_url: string;
+	login: string;
+	id: number;
+	name: string;
+}
 
 class AuthenticateUserService {
 	async execute(code: string) {
@@ -20,7 +26,17 @@ class AuthenticateUserService {
 					Accept: "application/json",
 				},
 			});
-		return accessTokenResponse;
+
+		const response = await axios.get<IUserResponse>(
+			"https://api.github.com/user",
+			{
+				headers: {
+					authorization: `Bearer ${accessTokenResponse.access_token}`,
+				},
+			}
+		);
+
+		return response.data;
 	}
 }
 
