@@ -27,4 +27,8 @@ router.get("/messages/last", (req, res) => {
 
 router.get("/profile", ensureAuthenticated, new ProfileUserController().handle);
 
+router.get("/teste", (req, res) => {
+	res.send(require("fs").readFileSync("./src/public/index.html", "utf8"));
+});
+
 export { router };
