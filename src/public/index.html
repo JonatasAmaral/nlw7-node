@@ -68,7 +68,8 @@
 		integrity="sha512-PA1EdxeDIgp5/lxnirTMRxStZzun1iaBta+gAUTAOPkGr4ASq0UUte/Xlr7YwCRVUEEM03MnPkEfWe9rTgTrrQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
-		const socket = io("http://localhost:4000");
+
+		const socket = io(window.location.origin);
 		socket.on("new_message", (data) => {
 			console.log(data);
 
