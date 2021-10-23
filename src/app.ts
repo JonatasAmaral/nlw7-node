@@ -7,7 +7,6 @@ import cors from "cors";
 import { router } from "./routes";
 
 const app = express();
-const port = 4000;
 
 const serverHttp = http.createServer(app);
 const io = new Server(serverHttp, {
@@ -32,4 +31,5 @@ app.get("/signin/callback", (request, response) => {
 
 	return response.json(code);
 });
-serverHttp.listen(port, () => console.log("🚀 Server running on PORT " + port));
+
+export { serverHttp, io };
