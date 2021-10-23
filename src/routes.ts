@@ -18,4 +18,6 @@ router.get("/messages/last3", (req, res) => {
 	new GetLastMessagesController().handle(req, res, 3);
 });
 
+router.get("/profile", ensureAuthenticated, new ProfileUserController().handle);
+
 export { router };
