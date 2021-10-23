@@ -4,7 +4,10 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"dev": "ts-node-dev --exit-child src/server.ts"
+		"dev": "ts-node-dev --exit-child src/server.ts",
+		"build": "tsc; prisma deploy",
+		"start": "node build/server.js",
+		"postinstall": "yarn build"
 	},
 	"dependencies": {
 		"@prisma/client": "3.3.0",
