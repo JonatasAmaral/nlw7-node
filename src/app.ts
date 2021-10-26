@@ -28,9 +28,14 @@ app.get("/github", (request, response) => {
 	);
 });
 app.get("/signin/callback", (request, response) => {
-	const { code } = request.query;
+	const { forward_to, code } = request.query;
 
-	return response.json(code);
+	if (forward_to) {
+		response.redirect(`${forward_to}?code=${code}`);
+		response.end();
+	} else {
+		return response.json(code);
+	}
 });
 
 export { serverHttp, io };
