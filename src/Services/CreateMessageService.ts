@@ -14,9 +14,7 @@ class CreateMessageService {
 		});
 
 		const infoWS = {
-			text: message.text,
-			user_id: message.user_id,
-			created_at: message.created_at,
+			...message,
 			user: {
 				name: message.user.name,
 				avatar_url: message.user.avatar_url,
