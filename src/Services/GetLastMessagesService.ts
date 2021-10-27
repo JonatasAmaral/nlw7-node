@@ -5,7 +5,7 @@ class GetLastMessagesService {
 		const messages = await prismaClient.message.findMany({
 			take: amount,
 			orderBy: {
-				created_at: "asc",
+				created_at: "desc",
 			},
 			include: {
 				user: true,
